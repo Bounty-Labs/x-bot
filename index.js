@@ -4,6 +4,32 @@ const { XMLBuilder, XMLParser } = require('fast-xml-parser')
 
 const fs = require("fs")
 require('dotenv').config()
+function isFullUser(user) {
+  return 'screen_name' in user
+}
+function sanitizeFileName(fileName) {
+  // Windows / Linuxで使えない文字列をアンダーバーに置き換える
+  // スペースをアンダーバーに置き換える
+  return fileName.replace(/[\\/:*?"<>| ]/g, '').trim()
+}
+function getContent(tweet) {
+  let tweetText = tweet.full_text
+  if (!tweetText) {
+    throw new Error('tweet.full_text is empty')
+  }
+  const mediaUrls = []
+  if (tweet.extended_entities && tweet.extended_entities.media) {
+    for (const media of tweet.extended_entities.media) {
+      tweetText = tweetText.replace(media.url, '')
+      mediaUrls.push(media.media_url_https)
+    }
+  }
+  return [
+    tweetText.trim(),
+    mediaUrls.length > 0 ? '<hr>' : '',
+    mediaUrls.map((url) => `<img src="${url}"><br>`).join('\n'),
+  ].join('\n')
+}
 const init = async () => {
   const twitter = await Twitter.login({
     username: process.env.TWITTER_USERNAME,
@@ -28,6 +54,12 @@ const init = async () => {
     }, */
   })
   try {
+    /* const url="https://twitter.com/TXBoater/status/1710091125401276743"
+    const page = await twitter.scraper.getScraperPage()
+    await page.goto(url) */
+    const o=await twitter.getUserByUserId({userId:"@MayoMayoMe"})
+    console.log(o)
+    return
     const searchWordPath = process.env.SEARCH_WORD_PATH || 'data/searches.json'
     const searchWords = JSON.parse(
       fs.readFileSync(searchWordPath, 'utf8'),
@@ -117,7 +149,7 @@ const init = async () => {
   } catch (e) {
     console.error('Error', e)
   } finally {
-    await twitter.close()
+    // await twitter.close()
   }
 }
 init()
