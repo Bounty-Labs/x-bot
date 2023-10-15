@@ -12,11 +12,6 @@ module.exports = class DB {
     try {
       this.sequelize = new Sequelize({
         dialect: 'mysql',
-        host: "s3.v100.vip",
-        port: "35453",
-        database: "twitter",
-        username: "spider",
-        password: "GvrX%7%fg*6Yhk%&i5AR928N$^RL4gb!VCUSusn3",
         define: { // sequelize.define() 或 Model.init() 的默认选项
           charset: 'utf8',
           timestamps: false, // 添加updatedAt,createdAt属性
