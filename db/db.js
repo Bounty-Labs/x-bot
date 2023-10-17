@@ -1,6 +1,7 @@
 const { Sequelize } = require('sequelize');
 const mentionModel = require("./mention.js")
 const userModel = require("./user.js")
+require('dotenv').config()
 module.exports = class DB {
   sequelize
   mention
@@ -12,6 +13,11 @@ module.exports = class DB {
     try {
       this.sequelize = new Sequelize({
         dialect: 'mysql',
+        host: process.env.HOST,
+        port: process.env.PORT,
+        database: process.env.DATABASE,
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD,
         define: { // sequelize.define() 或 Model.init() 的默认选项
           charset: 'utf8',
           timestamps: false, // 添加updatedAt,createdAt属性
