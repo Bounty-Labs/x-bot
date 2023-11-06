@@ -4,14 +4,17 @@ const { Sequelize, Op } = require('sequelize');
 const DB = require("./db/db")
 const moment = require("moment")
 const db = new DB()
-const accounts = require("./accounts.json")
+const accounts = require("./account/twitter.json")
+const proxies = require("./account/proxy.json")
 require('dotenv').config()
 const executablePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
 
 let twitter = null
 const login = async () => {
   const index = Math.floor(Math.random() * accounts.length)
-  const acc = accounts[index]
+  const acc = accounts[1]
+  const proxy = proxies.find(item => item.remark == acc.proxy)
+  console.log(proxy)
   const twitter = await Twitter.login({
     ...acc,
     puppeteerOptions: {
@@ -19,7 +22,8 @@ const login = async () => {
       userDataDirectory: `./data/${acc.username}`,
       headless: false,
       proxy: {
-        server: "http://127.0.0.1:10809"
+        server: `socks5://${proxy.encryption}:${proxy.password}@${proxy.host}:${proxy.port}`
+        // server: "socks5://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpkZDZiODVlZi02NjA3LTQ5MjktYmFjNy1hNjZkNTVlYTEwNTc@pic2.zhimg.com.e3020.com:28000#香港 03"
       }
     },
     /* debugOptions: {
@@ -144,7 +148,8 @@ const crawlUser = async (id_list) => {
 
 const init = async () => {
   twitter = await login()
-  await db.syncModel()
+
+  /* await db.syncModel()
   await crawlMentions()
   const whereStr = '%ost'
   const mentionList = await db.mention.findAll({
@@ -160,7 +165,7 @@ const init = async () => {
     `SELECT * FROM mention JOIN user ON mention.in_reply_to_user_id_str = user.user_id_str where full_text like "${whereStr}" and followers_count>1166220`
   );
   console.log(results)
-  await twitter.close()
+  await twitter.close() */
 }
 
 

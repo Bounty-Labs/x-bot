@@ -3,4 +3,4 @@ data/
 .env
 logs/
 output/
-accounts.json
+account/
