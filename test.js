@@ -14,22 +14,16 @@ axios({
 }); */
 const axios = require("axios")
 const { SocksProxyAgent } = require('socks-proxy-agent');
-const proxyOptions = `socks5://127.0.0.1:10808`; // your sock5 host and port;
-const httpsAgent = new SocksProxyAgent(proxyOptions);
+const proxyOptions = `socks5://127.0.0.1:10818`; // your sock5 host and port;
+// const proxyOptions = "socks5://chacha20-ietf-poly1305:dd6b85ef-6607-4929-bac7-a66d55ea1057@pic2.zhimg.com.e3020.com:28000#香港 03"
+const httpsAgent = httpAgent = new SocksProxyAgent(proxyOptions);
 axios({
-  // httpsAgent,
-  proxy: {
-    protocol: 'http',
-    host: '127.0.0.1',
-    port: 10809
-    // host: '192.168.8.28',
-    // port: 6666
-  },
+  httpsAgent,
+  httpAgent,
   method: 'GET',
-  url: 'https://www.google.com/',
-  //...
+  url: 'https://x.com/',
 }).then(e => {
-  console.log(e, 222)
+  console.log(e, "succeed")
 }).catch(err => {
-  console.log(err, 22222)
+  console.log(err && err.response, err && err.response && err && err.response.status, 22222)
 })

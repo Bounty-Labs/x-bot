@@ -1,0 +1,33 @@
+2023/11/07 11:58:53 [Debug] app/log: Logger started
+2023/11/07 11:58:53 [Debug] app/proxyman/inbound: creating stream worker on 127.0.0.1:10808
+2023/11/07 11:58:53 [Debug] app/proxyman/inbound: creating stream worker on 127.0.0.1:10809
+2023/11/07 11:58:53 [Debug] app/proxyman/inbound: creating stream worker on 0.0.0.0:10810
+2023/11/07 11:58:53 [Debug] app/proxyman/inbound: creating stream worker on 0.0.0.0:10811
+2023/11/07 11:58:53 [Debug] app/proxyman/inbound: creating stream worker on 127.0.0.1:50129
+2023/11/07 11:58:53 [Debug] app/stats: create new counter outbound>>>proxy>>>traffic>>>uplink
+2023/11/07 11:58:53 [Debug] app/stats: create new counter outbound>>>proxy>>>traffic>>>downlink
+2023/11/07 11:58:53 [Debug] app/stats: create new counter outbound>>>direct>>>traffic>>>uplink
+2023/11/07 11:58:53 [Debug] app/stats: create new counter outbound>>>direct>>>traffic>>>downlink
+2023/11/07 11:58:53 [Debug] app/stats: create new counter outbound>>>block>>>traffic>>>uplink
+2023/11/07 11:58:53 [Debug] app/stats: create new counter outbound>>>block>>>traffic>>>downlink
+2023/11/07 11:59:25 [Debug] app/log: Logger started
+2023/11/07 11:59:25 [Debug] app/proxyman/inbound: creating stream worker on 127.0.0.1:10818
+2023/11/07 11:59:25 [Debug] app/proxyman/inbound: creating stream worker on 127.0.0.1:10819
+2023/11/07 11:59:25 [Debug] app/proxyman/inbound: creating stream worker on 0.0.0.0:10820
+2023/11/07 11:59:25 [Debug] app/proxyman/inbound: creating stream worker on 0.0.0.0:10821
+2023/11/07 11:59:25 [Debug] app/proxyman/inbound: creating stream worker on 127.0.0.1:50129
+2023/11/07 11:59:25 [Debug] app/stats: create new counter outbound>>>proxy>>>traffic>>>uplink
+2023/11/07 11:59:25 [Debug] app/stats: create new counter outbound>>>proxy>>>traffic>>>downlink
+2023/11/07 11:59:25 [Debug] app/stats: create new counter outbound>>>direct>>>traffic>>>uplink
+2023/11/07 11:59:25 [Debug] app/stats: create new counter outbound>>>direct>>>traffic>>>downlink
+2023/11/07 11:59:25 [Debug] app/stats: create new counter outbound>>>block>>>traffic>>>uplink
+2023/11/07 11:59:25 [Debug] app/stats: create new counter outbound>>>block>>>traffic>>>downlink
+2023/11/07 11:59:25 [Info] transport/internet/tcp: listening TCP on 127.0.0.1:50129
+2023/11/07 11:59:25 [Info] transport/internet/tcp: listening TCP on 127.0.0.1:10818
+2023/11/07 11:59:25 [Info] transport/internet/udp: listening UDP on 127.0.0.1:10818
+2023/11/07 11:59:25 [Info] transport/internet/tcp: listening TCP on 127.0.0.1:10819
+2023/11/07 11:59:25 [Info] transport/internet/tcp: listening TCP on 0.0.0.0:10820
+2023/11/07 11:59:25 [Info] transport/internet/udp: listening UDP on 0.0.0.0:10820
+2023/11/07 11:59:25 [Info] transport/internet/tcp: listening TCP on 0.0.0.0:10821
+2023/11/07 11:59:25 [Warning] V2Ray 5.11.0 started
+2023/11/07 11:59:38 [Debug] app/log: Logger closing
